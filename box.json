@@ -14,14 +14,17 @@
     "shortDescription":"The ColdBox adapter for Inertia.js",
     "description":"The ColdBox adapter for Inertia.js",
     "type":"modules",
-    "dependencies":{},
+    "dependencies":{
+        "vue-helpers":"^1.0.2"
+    },
     "devDependencies":{
-        "coldbox":"^4.3.0+188",
+        "coldbox":"^5.5.0+958",
         "testbox":"^2.4.0+80"
     },
     "installPaths":{
         "testbox":"testbox/",
-        "coldbox":"tests/resources/app/coldbox/"
+        "coldbox":"tests/resources/app/coldbox/",
+        "vue-helpers":"modules/vue-helpers/"
     },
     "scripts":{
         "postVersion":"package set location='elpete/cbInertia#v`package version`'"
