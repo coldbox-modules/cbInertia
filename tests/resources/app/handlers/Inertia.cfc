@@ -9,4 +9,11 @@ component {
         inertia( "Home", { "foo": "bar" } );
     }
 
+    function withSharedClosures( event, rc, prc ) {
+        inertia().share( "shared", function() {
+            return "value";
+        } );
+        inertia( "Home", { "foo": "bar" } );
+    }
+
 }

@@ -55,6 +55,25 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
                     // expect( actual ).toHaveKey( "url" );
                     // expect( actual.url ).toBeTypeOf( "url" );
                 } );
+
+                it( "can resolve closures in props", function() {
+                    prepareMock( getRequestContext() )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia", "" )
+                        .$results( "true" );
+                    var event = execute( event = "Inertia.withSharedClosures", renderResults = true );
+                    var actual = deserializeJSON( event.getValue( "cbox_rendered_content", "" ) );
+
+                    expect( actual ).toHaveKey( "component" );
+                    expect( actual.component ).toBe( "Home" );
+
+                    expect( actual ).toHaveKey( "props" );
+                    expect( actual.props ).toBe( { "foo": "bar", "shared": "value" } );
+
+                    // TODO: Waiting on https://github.com/ColdBox/coldbox-platform/pull/419 to be merged
+                    // expect( actual ).toHaveKey( "url" );
+                    // expect( actual.url ).toBeTypeOf( "url" );
+                } );
             } );
         } );
     }

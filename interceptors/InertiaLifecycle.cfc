@@ -17,7 +17,8 @@ component {
         structAppend( sharedProps, props, true );
 
         var page = event.getPrivateValue( "inertia__page" );
-        page.props = sharedProps;
+
+        page.props = resolveClosures( sharedProps );
 
         if ( event.getHTTPHeader( "X-Inertia", "" ) != "" ) {
             event.setHTTPHeader( statusCode = 200, statusText = "OK" )
@@ -33,6 +34,20 @@ component {
         event.setPrivateValue( "inertia__page", page );
 
         event.setView( argumentCollection = variables.defaultViewArgs );
+    }
+
+    struct function resolveClosures( required struct props ) {
+        return arguments.props.map( function( key, value ) {
+            if ( isClosure( arguments.value ) || isCustomFunction( arguments.value ) ) {
+                return arguments.value();
+            } else if ( isStruct( arguments.value ) ) {
+                return resolveClosures( arguments.value );
+            } else if ( isArray( arguments.value ) ) {
+                return arguments.value.map( resolveClosures );
+            } else {
+                return arguments.value;
+            }
+        } );
     }
 
 }
