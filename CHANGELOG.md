@@ -1,3 +1,11 @@
+# v1.1.0
+## 24 Dec 2019 — 05:38:10 UTC
+
+### feat
+
++ __Props:__ Resolve closures in props before rendering ([7ed313e](https://github.com/elpete/cbInertia/commit/7ed313e0208f4a09ad51967adc4064ec744b3612))
+
+
 # v1.0.0
 ## 16 Aug 2019 — 20:28:55 UTC
 
