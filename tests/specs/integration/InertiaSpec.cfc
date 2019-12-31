@@ -32,9 +32,8 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
                     expect( actual ).toHaveKey( "props" );
                     expect( actual.props ).toBe( { "foo": "bar" } );
 
-                    // TODO: Waiting on https://github.com/ColdBox/coldbox-platform/pull/419 to be merged
-                    // expect( actual ).toHaveKey( "url" );
-                    // expect( actual.url ).toBeTypeOf( "url" );
+                    expect( actual ).toHaveKey( "url" );
+                    expect( actual.url ).toBeTypeOf( "url" );
                 } );
 
                 it( "combines shared props with view props", function() {
@@ -51,9 +50,8 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
                     expect( actual ).toHaveKey( "props" );
                     expect( actual.props ).toBe( { "foo": "bar", "shared": "value" } );
 
-                    // TODO: Waiting on https://github.com/ColdBox/coldbox-platform/pull/419 to be merged
-                    // expect( actual ).toHaveKey( "url" );
-                    // expect( actual.url ).toBeTypeOf( "url" );
+                    expect( actual ).toHaveKey( "url" );
+                    expect( actual.url ).toBeTypeOf( "url" );
                 } );
 
                 it( "can resolve closures in props", function() {
@@ -70,9 +68,8 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
                     expect( actual ).toHaveKey( "props" );
                     expect( actual.props ).toBe( { "foo": "bar", "shared": "value" } );
 
-                    // TODO: Waiting on https://github.com/ColdBox/coldbox-platform/pull/419 to be merged
-                    // expect( actual ).toHaveKey( "url" );
-                    // expect( actual.url ).toBeTypeOf( "url" );
+                    expect( actual ).toHaveKey( "url" );
+                    expect( actual.url ).toBeTypeOf( "url" );
                 } );
             } );
         } );
