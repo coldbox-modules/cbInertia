@@ -1,3 +1,20 @@
+# v1.2.0
+## 31 Dec 2019 — 17:03:59 UTC
+
+### chore
+
++ __Tests:__ Re-enable getFullUrl expectations ([474ce0b](https://github.com/elpete/cbInertia/commit/474ce0bec0a4b09c220e8af222cbe9070a236e72))
+
+### feat
+
++ __ModuleConfig:__ Add toggles for automatic registering of interceptors and helpers ([7ccb0f9](https://github.com/elpete/cbInertia/commit/7ccb0f922bbc0b455a3e588ef044fa2c0dbba607))
+
+### other
+
++ __\*:__ docs: Document cbInertia
+ ([384c287](https://github.com/elpete/cbInertia/commit/384c2877c3b39658850223806e4060682f4b91b9))
+
+
 # v1.1.0
 ## 24 Dec 2019 — 05:38:10 UTC
 
