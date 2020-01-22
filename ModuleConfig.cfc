@@ -9,12 +9,9 @@ component {
     function configure() {
         settings = {
             "autoRegisterInterceptor": true,
-            "autoRegisterHelpers": true
+            "autoRegisterHelpers": true,
+            "autoRegisterControllerDecorator": true
         };
-
-        interceptors = [
-            { "class": "#moduleMapping#.interceptors.InertiaLifecycle" }
-        ];
     }
 
     function onLoad() {
@@ -33,6 +30,14 @@ component {
             );
             controller.setSetting( "applicationHelper", helpers );
         }
+
+        if ( settings.autoRegisterControllerDecorator ) {
+            if ( controller.getSetting( name = "controllerDecorator", defaultValue = "" ) != "" ) {
+                throw( "Cannot auto-register the `InertiaControllerDecorator` when a `controllerDecorator` is already set." );
+            }
+            controller.setSetting( "controllerDecorator", "#moduleMapping#.models.InertiaControllerDecorator" );
+            controller.getLoaderService().createControllerDecorator();
+        }
     }
 
     function onUnload() {
@@ -49,6 +54,10 @@ component {
             controller.getInterceptorService().unregister(
                 interceptorName = "InertiaLifecycleInterceptor"
             );
+        }
+
+        if ( settings.autoRegisterControllerDecorator ) {
+            controller.setSetting( "controllerDecorator", "" );
         }
     }
 

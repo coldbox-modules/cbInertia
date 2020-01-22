@@ -16,4 +16,8 @@ component {
         inertia( "Home", { "foo": "bar" } );
     }
 
+    function relocateTest( event, rc, prc ) {
+        relocate( "Inertia.normal" );
+    }
+
 }

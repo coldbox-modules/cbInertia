@@ -38,7 +38,8 @@ helpers, if you wish.
 moduleSettings = {
     "cbInertia": {
         "autoRegisterInterceptor": true,
-        "autoRegisterHelpers": true
+        "autoRegisterHelpers": true,
+        "autoRegisterControllerDecorator": true
     }
 }
 ```
@@ -128,6 +129,19 @@ inertia.share( "user", function() {
 ```
 
 You can call `share` as many times as you need.
+
+### Controller Decorator
+
+Inertia automatically registers a Controller decorator by default.  This
+decorator is used to automate setting the status code for redirects for `PUT`,
+`PATCH`, and `DELETE` verbs to 303. ([See here.](https://inertiajs.com/redirects#303-response-code))
+
+If you choose not to use the controller decorator, you will need to ensure
+that redirects from `PUT`, `PATCH`, and `DELETE` actions return a 303 status code.
+
+```cfc
+relocate( event = "home.index", statusCode = 303 );
+```
 
 ### Code Splitting and ColdBox Elixir Integration
 

@@ -72,6 +72,18 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
                     expect( actual.url ).toBeTypeOf( "url" );
                 } );
             } );
+
+            describe( "status codes", function() {
+                it( "returns a 303 status code automatically for PUT or PATCH or DELETE verbs when relocating", function() {
+                    prepareMock( getRequestContext() )
+                        .$( "getHTTPMethod", "DELETE" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia", "" )
+                        .$results( "true" );
+                    var event = execute( event = "Inertia.relocateTest", renderResults = true );
+                    expect( event.getValue( "relocate_STATUSCODE", "" ) ).toBe( 303 );
+                } );
+            } );
         } );
     }
 }
