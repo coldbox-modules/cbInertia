@@ -1,3 +1,11 @@
+# v1.2.1
+## 22 Jan 2020 — 21:04:19 UTC
+
+### other
+
++ __\*:__ feat: Automatically use a 303 status code where required ([62bbb31](https://github.com/elpete/cbInertia/commit/62bbb317bf2b022a72117a1d2bc729b8d351c174))
+
+
 # v1.2.0
 ## 31 Dec 2019 — 17:03:59 UTC
 
