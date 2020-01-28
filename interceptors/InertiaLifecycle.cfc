@@ -11,6 +11,10 @@ component {
             return;
         }
 
+        if ( event.getHTTPMethod() != "GET" ) {
+            return;
+        }
+
         var version = wirebox.getInstance( dsl = "coldbox:setting:version@cbInertia" );
         version = isCallable( version ) ? version() : version;
         if ( event.getHTTPHeader( "X-Inertia-Version", "" ) == version ) {
@@ -34,7 +38,13 @@ component {
 
         var page = event.getPrivateValue( "inertia__page" );
 
-        page.props = resolveClosures( sharedProps );
+        page.props = resolveClosures(
+            filterForPartialData(
+                page.component == event.getHTTPHeader( "X-Inertia-Partial-Component", "" ),
+                event.getHTTPHeader( "X-Inertia-Partial-Data", "" ).listToArray( "," ),
+                sharedProps
+            )
+        );
 
         if ( event.getHTTPHeader( "X-Inertia", "" ) != "" ) {
             event
@@ -61,6 +71,16 @@ component {
             } else {
                 return arguments.value;
             }
+        } );
+    }
+
+    private struct function filterForPartialData( required boolean isSameComponent, array only = [], struct props = {} ) {
+        if ( !arguments.isSameComponent || arguments.only.isEmpty() ) {
+            return arguments.props;
+        }
+
+        return arguments.props.filter( function( key ) {
+            return arrayContainsNoCase( only, arguments.key );
         } );
     }
 

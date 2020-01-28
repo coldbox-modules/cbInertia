@@ -25,7 +25,17 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
                     prepareMock( getRequestContext() )
                         .$( "getHTTPHeader" )
                         .$args( "X-Inertia", "" )
-                        .$results( "true" );
+                        .$results( "true" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia-Partial-Component", "" )
+                        .$results( "Home" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia-Partial-Data", "" )
+                        .$results( "" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia-Version", "" )
+                        .$results( "" );
+
                     var event = execute( event = "Inertia.normal", renderResults = true );
                     var actual = deserializeJSON( event.getValue( "cbox_rendered_content", "" ) );
 
@@ -43,7 +53,17 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
                     prepareMock( getRequestContext() )
                         .$( "getHTTPHeader" )
                         .$args( "X-Inertia", "" )
-                        .$results( "true" );
+                        .$results( "true" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia-Partial-Component", "" )
+                        .$results( "Home" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia-Partial-Data", "" )
+                        .$results( "" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia-Version", "" )
+                        .$results( "" );
+                    ;
                     var event = execute( event = "Inertia.withShared", renderResults = true );
                     var actual = deserializeJSON( event.getValue( "cbox_rendered_content", "" ) );
 
@@ -61,8 +81,99 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
                     prepareMock( getRequestContext() )
                         .$( "getHTTPHeader" )
                         .$args( "X-Inertia", "" )
-                        .$results( "true" );
+                        .$results( "true" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia-Partial-Component", "" )
+                        .$results( "Home" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia-Partial-Data", "" )
+                        .$results( "" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia-Version", "" )
+                        .$results( "" );
+                    ;
                     var event = execute( event = "Inertia.withSharedClosures", renderResults = true );
+                    var actual = deserializeJSON( event.getValue( "cbox_rendered_content", "" ) );
+
+                    expect( actual ).toHaveKey( "component" );
+                    expect( actual.component ).toBe( "Home" );
+
+                    expect( actual ).toHaveKey( "props" );
+                    expect( actual.props ).toBe( { "foo": "bar", "shared": "value" } );
+
+                    expect( actual ).toHaveKey( "url" );
+                    expect( actual.url ).toBeTypeOf( "url" );
+                } );
+
+                it( "can request partial data", function() {
+                    prepareMock( getRequestContext() )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia", "" )
+                        .$results( "true" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia-Partial-Component", "" )
+                        .$results( "Home" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia-Partial-Data", "" )
+                        .$results( "foo" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia-Version", "" )
+                        .$results( "" );
+                    var event = execute( event = "Inertia.withShared", renderResults = true );
+                    var actual = deserializeJSON( event.getValue( "cbox_rendered_content", "" ) );
+
+                    expect( actual ).toHaveKey( "component" );
+                    expect( actual.component ).toBe( "Home" );
+
+                    expect( actual ).toHaveKey( "props" );
+                    expect( actual.props ).toBe( { "foo": "bar" } );
+
+                    expect( actual ).toHaveKey( "url" );
+                    expect( actual.url ).toBeTypeOf( "url" );
+                } );
+
+                it( "can request a list of partial data", function() {
+                    prepareMock( getRequestContext() )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia", "" )
+                        .$results( "true" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia-Partial-Component", "" )
+                        .$results( "Home" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia-Partial-Data", "" )
+                        .$results( "" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia-Version", "" )
+                        .$results( "" );
+                    var event = execute( event = "Inertia.withShared", renderResults = true );
+                    var actual = deserializeJSON( event.getValue( "cbox_rendered_content", "" ) );
+
+                    expect( actual ).toHaveKey( "component" );
+                    expect( actual.component ).toBe( "Home" );
+
+                    expect( actual ).toHaveKey( "props" );
+                    expect( actual.props ).toBe( { "foo": "bar", "shared": "value" } );
+
+                    expect( actual ).toHaveKey( "url" );
+                    expect( actual.url ).toBeTypeOf( "url" );
+                } );
+
+                it( "returns all the data if the component does not match", function() {
+                    prepareMock( getRequestContext() )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia", "" )
+                        .$results( "true" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia-Partial-Component", "" )
+                        .$results( "Wrong" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia-Partial-Data", "" )
+                        .$results( "foo" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia-Version", "" )
+                        .$results( "" );
+                    var event = execute( event = "Inertia.withShared", renderResults = true );
                     var actual = deserializeJSON( event.getValue( "cbox_rendered_content", "" ) );
 
                     expect( actual ).toHaveKey( "component" );
@@ -82,7 +193,10 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
                         .$( "getHTTPMethod", "DELETE" )
                         .$( "getHTTPHeader" )
                         .$args( "X-Inertia", "" )
-                        .$results( "true" );
+                        .$results( "true" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia-Version", "" )
+                        .$results( "" );
                     var event = execute( event = "Inertia.relocateTest", renderResults = true );
                     expect( event.getValue( "relocate_STATUSCODE", "" ) ).toBe( 303 );
                 } );
