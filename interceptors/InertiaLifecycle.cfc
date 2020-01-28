@@ -3,10 +3,7 @@ component {
     property name="version" inject="coldbox:setting:version@cbInertia";
 
     function configure() {
-        variables.defaultViewArgs = {
-            "view" = "main/index",
-            "module" = "cbInertia"
-        };
+        variables.defaultViewArgs = { "view": "main/index", "module": "cbInertia" };
     }
 
     function preProcess( event ) {
@@ -27,7 +24,7 @@ component {
     }
 
     function preLayout( event ) {
-        if ( ! event.getPrivateValue( "inertia__isInertia", false ) ) {
+        if ( !event.getPrivateValue( "inertia__isInertia", false ) ) {
             return;
         }
 
@@ -40,13 +37,11 @@ component {
         page.props = resolveClosures( sharedProps );
 
         if ( event.getHTTPHeader( "X-Inertia", "" ) != "" ) {
-            event.setHTTPHeader( statusCode = 200, statusText = "OK" )
+            event
+                .setHTTPHeader( statusCode = 200, statusText = "OK" )
                 .setHTTPHeader( name = "Vary", value = "Accept" )
                 .setHTTPHeader( name = "X-Inertia", value = true )
-                .renderData(
-                    type = "json",
-                    data = page
-                );
+                .renderData( type = "json", data = page );
             return;
         }
 
@@ -71,7 +66,7 @@ component {
 
     private boolean function isCallable( any value ) {
         return isClosure( arguments.value ) ||
-            isCustomFunction( arguments.value );
+        isCustomFunction( arguments.value );
     }
 
 }

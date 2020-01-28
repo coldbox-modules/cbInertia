@@ -19,19 +19,20 @@ component {
     }
 
     private function updatePageVariable() {
-        event.setPrivateValue( "inertia__page", {
-            "component": event.getPrivateValue( "inertia__component" ),
-            "props": event.getPrivateValue( "inertia__props" ),
-            "url": event.getFullUrl(),
-            "version": isCallable( variables.version ) ?
-                variables.version() :
-                variables.version
-        } );
+        event.setPrivateValue(
+            "inertia__page",
+            {
+                "component": event.getPrivateValue( "inertia__component" ),
+                "props": event.getPrivateValue( "inertia__props" ),
+                "url": event.getFullUrl(),
+                "version": isCallable( variables.version ) ? variables.version() : variables.version
+            }
+        );
     }
 
     private boolean function isCallable( any value ) {
         return isClosure( arguments.value ) ||
-            isCustomFunction( arguments.value );
+        isCustomFunction( arguments.value );
     }
 
 }

@@ -27,7 +27,9 @@
         "vue-helpers":"modules/vue-helpers/"
     },
     "scripts":{
-        "postVersion":"package set location='elpete/cbInertia#v`package version`'"
+        "postVersion":"package set location='elpete/cbInertia#v`package version`'",
+        "format": "cfformat run helpers/**/*.cfc,interceptors/**/*.cfc,models/**/*.cfc,tests/specs/**/*.cfc --overwrite",
+        "format:check": "cfformat check helpers/**/*.cfc,interceptors/**/*.cfc,models/**/*.cfc,tests/specs/**/*.cfc"
     },
     "ignore":[
         "**/.*",

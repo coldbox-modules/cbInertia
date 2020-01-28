@@ -1,19 +1,22 @@
 component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
+
     function run() {
         describe( "Inertia", function() {
             describe( "template rendering", function() {
                 it( "renders a view when called normally", function() {
                     var event = execute( event = "Inertia.normal", renderResults = true );
                     var html = event.getValue( "cbox_rendered_content", "" );
-                    expect( html ).toMatch( '&quot;component&quot;:&quot;Home&quot;' );
-                    expect( html ).toMatch( '&quot;props&quot;:{&quot;foo&quot;:&quot;bar&quot;}' );
+                    expect( html ).toMatch( "&quot;component&quot;:&quot;Home&quot;" );
+                    expect( html ).toMatch( "&quot;props&quot;:{&quot;foo&quot;:&quot;bar&quot;}" );
                 } );
 
                 it( "combines shared props with view props", function() {
                     var event = execute( event = "Inertia.withShared", renderResults = true );
                     var html = event.getValue( "cbox_rendered_content", "" );
-                    expect( html ).toMatch( '&quot;component&quot;:&quot;Home&quot;' );
-                    expect( html ).toMatch( '&quot;props&quot;:{&quot;shared&quot;:&quot;value&quot;,&quot;foo&quot;:&quot;bar&quot;}' );
+                    expect( html ).toMatch( "&quot;component&quot;:&quot;Home&quot;" );
+                    expect( html ).toMatch(
+                        "&quot;props&quot;:{&quot;shared&quot;:&quot;value&quot;,&quot;foo&quot;:&quot;bar&quot;}"
+                    );
                 } );
             } );
 
@@ -103,4 +106,5 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
             } );
         } );
     }
+
 }
