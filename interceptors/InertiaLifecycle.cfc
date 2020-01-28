@@ -1,5 +1,7 @@
 component {
 
+    property name="version" inject="coldbox:setting:version@cbInertia";
+
     function configure() {
         variables.defaultViewArgs = {
             "view" = "main/index",
@@ -7,7 +9,24 @@ component {
         };
     }
 
-    function preLayout( event, interceptData, buffer, rc, prc ) {
+    function preProcess( event ) {
+        if ( event.getHTTPHeader( "X-Inertia", "" ) == "" ) {
+            return;
+        }
+
+        var version = wirebox.getInstance( dsl = "coldbox:setting:version@cbInertia" );
+        version = isCallable( version ) ? version() : version;
+        if ( event.getHTTPHeader( "X-Inertia-Version", "" ) == version ) {
+            return;
+        }
+
+        event.noExecution();
+        event.setHTTPHeader( statusCode = 409, statusText = "Conflict" );
+        event.setHTTPHeader( name = "X-Inertia-Location", value = event.getFullUrl() );
+        event.renderData( type = "plain", data = "Conflict", statusCode = 409 );
+    }
+
+    function preLayout( event ) {
         if ( ! event.getPrivateValue( "inertia__isInertia", false ) ) {
             return;
         }
@@ -36,7 +55,7 @@ component {
         event.setView( argumentCollection = variables.defaultViewArgs );
     }
 
-    struct function resolveClosures( required struct props ) {
+    private struct function resolveClosures( required struct props ) {
         return arguments.props.map( function( key, value ) {
             if ( isClosure( arguments.value ) || isCustomFunction( arguments.value ) ) {
                 return arguments.value();
@@ -48,6 +67,11 @@ component {
                 return arguments.value;
             }
         } );
+    }
+
+    private boolean function isCallable( any value ) {
+        return isClosure( arguments.value ) ||
+            isCustomFunction( arguments.value );
     }
 
 }

@@ -10,7 +10,10 @@ component {
         settings = {
             "autoRegisterInterceptor": true,
             "autoRegisterHelpers": true,
-            "autoRegisterControllerDecorator": true
+            "autoRegisterControllerDecorator": true,
+            "version": function() {
+                return "";
+            }
         };
     }
 

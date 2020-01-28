@@ -84,6 +84,23 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
                     expect( event.getValue( "relocate_STATUSCODE", "" ) ).toBe( 303 );
                 } );
             } );
+
+            describe( "version", function() {
+                it( "returns a 409 Conflict with a X-Inertia-Location header when the versions don't match", function() {
+                    prepareMock( getRequestContext() )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia", "" )
+                        .$results( "true" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia-Version", "" )
+                        .$results( "not-matching-version" );
+                    var event = execute( event = "Inertia.normal", renderResults = true );
+                    expect( event.getStatusCode() ).toBe( 409 );
+                    var headers = event.getValue( "cbox_headers", {} );
+                    expect( headers ).toHaveKey( "X-Inertia-Location" );
+                    expect( headers[ "X-Inertia-Location" ] ).toBe( event.getFullUrl() );
+                } );
+            } );
         } );
     }
 }

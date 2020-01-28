@@ -39,7 +39,10 @@ moduleSettings = {
     "cbInertia": {
         "autoRegisterInterceptor": true,
         "autoRegisterHelpers": true,
-        "autoRegisterControllerDecorator": true
+        "autoRegisterControllerDecorator": true,
+        "version": function() {
+            return "";
+        }
     }
 }
 ```
@@ -214,3 +217,23 @@ module.exports = elixir(mix => {
   mix.vue("app.js");
 });
 ```
+
+### versioning
+
+cbInertia follows the [Inertia.js spec](https://inertiajs.com/the-protocol#asset-versioning)
+for versioning.  If you are using ColdBox Elixir, use the following function
+as the value for `version` in your `config/ColdBox.cfc`:
+
+```cfc
+moduleSettings = {
+    "cbInertia": {
+        "version": function() {
+            return hash( fileRead( "/includes/rev-manifest.json" ) );
+        }
+    }
+};
+```
+
+If you are using versioning with ColdBox Elixir (which is the default for a
+production build), this will return a unique version string for cbInertia
+to compare.

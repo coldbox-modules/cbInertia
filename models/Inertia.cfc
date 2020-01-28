@@ -1,7 +1,7 @@
 component {
 
     property name="event" inject="provider:coldbox:requestContext";
-    property name="config" inject="coldbox:moduleConfig:cbInertia";
+    property name="version" inject="coldbox:setting:version@cbInertia";
 
     function render( component, props = {} ) {
         event.setPrivateValue( "inertia__isInertia", true );
@@ -23,8 +23,15 @@ component {
             "component": event.getPrivateValue( "inertia__component" ),
             "props": event.getPrivateValue( "inertia__props" ),
             "url": event.getFullUrl(),
-            "version": config.version
+            "version": isCallable( variables.version ) ?
+                variables.version() :
+                variables.version
         } );
+    }
+
+    private boolean function isCallable( any value ) {
+        return isClosure( arguments.value ) ||
+            isCustomFunction( arguments.value );
     }
 
 }
