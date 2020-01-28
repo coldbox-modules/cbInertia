@@ -1,3 +1,17 @@
+# v1.3.0
+## 28 Jan 2020 — 07:30:07 UTC
+
+### feat
+
++ __InertiaLifecycle:__ Allow for partial reloading ([7df586e](https://github.com/elpete/cbInertia/commit/7df586e975098f64b037ca777082651db3674e6c))
++ __Versioning:__ Follow Inertia.js spec on versioning ([c4ae40f](https://github.com/elpete/cbInertia/commit/c4ae40f9d8daa27c3ff8b6062bfb18d5bf91d20e))
+
+### other
+
++ __\*:__ chore: Add automatic formatting with cfformat
+ ([686d830](https://github.com/elpete/cbInertia/commit/686d8300633818e65aae9a2ccaac7d7f730a0aae))
+
+
 # v1.2.1
 ## 22 Jan 2020 — 21:04:19 UTC
 
