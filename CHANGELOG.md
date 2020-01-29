@@ -1,3 +1,12 @@
+# v1.4.0
+## 29 Jan 2020 — 06:26:43 UTC
+
+### feat
+
++ __ModuleConfig:__ Move defaultViewArgs to a module setting
+ ([f55f374](https://github.com/elpete/cbInertia/commit/f55f374b8a43cb28b9f53f849dfd3f08032e262c))
+
+
 # v1.3.0
 ## 28 Jan 2020 — 07:30:07 UTC
 
