@@ -1,10 +1,7 @@
 component {
 
     property name="version" inject="coldbox:setting:version@cbInertia";
-
-    function configure() {
-        variables.defaultViewArgs = { "view": "main/index", "module": "cbInertia" };
-    }
+    property name="defaultViewArgs" inject="coldbox:setting:defaultViewArgs@cbInertia";
 
     function preProcess( event ) {
         if ( event.getHTTPHeader( "X-Inertia", "" ) == "" ) {

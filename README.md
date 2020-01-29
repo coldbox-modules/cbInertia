@@ -30,8 +30,12 @@ box install cbInertia
 ```
 
 By default, no configuration is needed. However, you can disable the automatic
-registering of the `InertiaLifecycle` interceptor and/or the cbInertia application
-helpers, if you wish.
+registering of the `InertiaLifecycle` interceptor, the cbInertia application
+helper, or the Controller decorator if you wish.  You can also customize the
+view arguments for Inertia events.
+
+The one setting you will likely modify is the `version` setting.  You can read
+more about it below.
 
 ```
 // config/ColdBox.cfc
@@ -40,6 +44,10 @@ moduleSettings = {
         "autoRegisterInterceptor": true,
         "autoRegisterHelpers": true,
         "autoRegisterControllerDecorator": true,
+        "defaultViewArgs": {
+            "view": "main/index",
+            "module": "cbInertia"
+        }
         "version": function() {
             return "";
         }
@@ -132,6 +140,22 @@ inertia.share( "user", function() {
 ```
 
 You can call `share` as many times as you need.
+
+### Customizing the Inertia View
+
+The default view that ships with cbInertia suits most use cases.  If you need
+to use a different view for any reason, you can customize the view arguments
+sent to the `setView` function using the `defaultViewArgs` setting.
+
+```cfc
+moduleSettings = {
+    "cbInertia": {
+        "defaultViewArgs": {
+            "view": "custom/view/page"
+        }
+    }
+};
+```
 
 ### Controller Decorator
 

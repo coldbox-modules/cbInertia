@@ -11,6 +11,10 @@ component {
             "autoRegisterInterceptor": true,
             "autoRegisterHelpers": true,
             "autoRegisterControllerDecorator": true,
+            "defaultViewArgs": {
+                "view": "main/index",
+                "module": "cbInertia"
+            },
             "version": function() {
                 return "";
             }
