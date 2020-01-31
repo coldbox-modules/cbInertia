@@ -1,3 +1,14 @@
+# v1.4.1
+## 31 Jan 2020 — 18:54:01 UTC
+
+### other
+
++ __\*:__ chore: Format to 80 column max width
+ ([a43c6c8](https://github.com/elpete/cbInertia/commit/a43c6c8720f054c5578d2f13a6fdf923f5749a6b))
++ __\*:__ fix: Better resolveClosures handling of arrays
+ ([7a7b7ca](https://github.com/elpete/cbInertia/commit/7a7b7caf94cae969c06fa0da9ab978ec75db5581))
+
+
 # v1.4.0
 ## 29 Jan 2020 — 06:26:43 UTC
 
