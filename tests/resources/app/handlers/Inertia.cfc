@@ -16,6 +16,10 @@ component {
         inertia( "Home", { "foo": "bar" } );
     }
 
+    function withArrayProp( event, rc, prc ) {
+        inertia( "Home", { "numbers": [ 1, 2, 3 ] } );
+    }
+
     function relocateTest( event, rc, prc ) {
         relocate( "Inertia.normal" );
     }

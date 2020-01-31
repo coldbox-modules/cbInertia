@@ -57,18 +57,18 @@ component {
         event.setView( argumentCollection = variables.defaultViewArgs );
     }
 
-    private struct function resolveClosures( required struct props ) {
-        return arguments.props.map( function( key, value ) {
-            if ( isClosure( arguments.value ) || isCustomFunction( arguments.value ) ) {
-                return arguments.value();
-            } else if ( isStruct( arguments.value ) ) {
+    private any function resolveClosures( required any prop ) {
+        if ( isClosure( arguments.prop ) || isCustomFunction( arguments.prop ) ) {
+            return arguments.prop();
+        } else if ( isStruct( arguments.prop ) ) {
+            return arguments.prop.map( function( key, value ) {
                 return resolveClosures( arguments.value );
-            } else if ( isArray( arguments.value ) ) {
-                return arguments.value.map( resolveClosures );
-            } else {
-                return arguments.value;
-            }
-        } );
+            } );
+        } else if ( isArray( arguments.prop ) ) {
+            return arguments.prop.map( resolveClosures );
+        } else {
+            return arguments.prop;
+        }
     }
 
     private struct function filterForPartialData( required boolean isSameComponent, array only = [], struct props = {} ) {
