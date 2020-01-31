@@ -1,7 +1,9 @@
 component {
 
     property name="version" inject="coldbox:setting:version@cbInertia";
-    property name="defaultViewArgs" inject="coldbox:setting:defaultViewArgs@cbInertia";
+    property
+        name="defaultViewArgs"
+        inject="coldbox:setting:defaultViewArgs@cbInertia";
 
     function preProcess( event ) {
         if ( event.getHTTPHeader( "X-Inertia", "" ) == "" ) {
@@ -12,7 +14,9 @@ component {
             return;
         }
 
-        var version = wirebox.getInstance( dsl = "coldbox:setting:version@cbInertia" );
+        var version = wirebox.getInstance(
+            dsl = "coldbox:setting:version@cbInertia"
+        );
         version = isCallable( version ) ? version() : version;
         if ( event.getHTTPHeader( "X-Inertia-Version", "" ) == version ) {
             return;
@@ -20,7 +24,10 @@ component {
 
         event.noExecution();
         event.setHTTPHeader( statusCode = 409, statusText = "Conflict" );
-        event.setHTTPHeader( name = "X-Inertia-Location", value = event.getFullUrl() );
+        event.setHTTPHeader(
+            name = "X-Inertia-Location",
+            value = event.getFullUrl()
+        );
         event.renderData( type = "plain", data = "Conflict", statusCode = 409 );
     }
 
@@ -37,8 +44,13 @@ component {
 
         page.props = resolveClosures(
             filterForPartialData(
-                page.component == event.getHTTPHeader( "X-Inertia-Partial-Component", "" ),
-                event.getHTTPHeader( "X-Inertia-Partial-Data", "" ).listToArray( "," ),
+                page.component == event.getHTTPHeader(
+                    "X-Inertia-Partial-Component",
+                    ""
+                ),
+                event
+                    .getHTTPHeader( "X-Inertia-Partial-Data", "" )
+                    .listToArray( "," ),
                 sharedProps
             )
         );
@@ -71,7 +83,11 @@ component {
         }
     }
 
-    private struct function filterForPartialData( required boolean isSameComponent, array only = [], struct props = {} ) {
+    private struct function filterForPartialData(
+        required boolean isSameComponent,
+        array only = [],
+        struct props = {}
+    ) {
         if ( !arguments.isSameComponent || arguments.only.isEmpty() ) {
             return arguments.props;
         }

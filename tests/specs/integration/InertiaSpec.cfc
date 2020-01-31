@@ -4,16 +4,28 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
         describe( "Inertia", function() {
             describe( "template rendering", function() {
                 it( "renders a view when called normally", function() {
-                    var event = execute( event = "Inertia.normal", renderResults = true );
+                    var event = execute(
+                        event = "Inertia.normal",
+                        renderResults = true
+                    );
                     var html = event.getValue( "cbox_rendered_content", "" );
-                    expect( html ).toMatch( "&quot;component&quot;:&quot;Home&quot;" );
-                    expect( html ).toMatch( "&quot;props&quot;:{&quot;foo&quot;:&quot;bar&quot;}" );
+                    expect( html ).toMatch(
+                        "&quot;component&quot;:&quot;Home&quot;"
+                    );
+                    expect( html ).toMatch(
+                        "&quot;props&quot;:{&quot;foo&quot;:&quot;bar&quot;}"
+                    );
                 } );
 
                 it( "combines shared props with view props", function() {
-                    var event = execute( event = "Inertia.withShared", renderResults = true );
+                    var event = execute(
+                        event = "Inertia.withShared",
+                        renderResults = true
+                    );
                     var html = event.getValue( "cbox_rendered_content", "" );
-                    expect( html ).toMatch( "&quot;component&quot;:&quot;Home&quot;" );
+                    expect( html ).toMatch(
+                        "&quot;component&quot;:&quot;Home&quot;"
+                    );
                     expect( html ).toMatch(
                         "&quot;props&quot;:{&quot;shared&quot;:&quot;value&quot;,&quot;foo&quot;:&quot;bar&quot;}"
                     );
@@ -36,8 +48,13 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
                         .$args( "X-Inertia-Version", "" )
                         .$results( "" );
 
-                    var event = execute( event = "Inertia.normal", renderResults = true );
-                    var actual = deserializeJSON( event.getValue( "cbox_rendered_content", "" ) );
+                    var event = execute(
+                        event = "Inertia.normal",
+                        renderResults = true
+                    );
+                    var actual = deserializeJSON(
+                        event.getValue( "cbox_rendered_content", "" )
+                    );
 
                     expect( actual ).toHaveKey( "component" );
                     expect( actual.component ).toBe( "Home" );
@@ -64,8 +81,13 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
                         .$args( "X-Inertia-Version", "" )
                         .$results( "" );
                     ;
-                    var event = execute( event = "Inertia.withShared", renderResults = true );
-                    var actual = deserializeJSON( event.getValue( "cbox_rendered_content", "" ) );
+                    var event = execute(
+                        event = "Inertia.withShared",
+                        renderResults = true
+                    );
+                    var actual = deserializeJSON(
+                        event.getValue( "cbox_rendered_content", "" )
+                    );
 
                     expect( actual ).toHaveKey( "component" );
                     expect( actual.component ).toBe( "Home" );
@@ -92,8 +114,13 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
                         .$args( "X-Inertia-Version", "" )
                         .$results( "" );
                     ;
-                    var event = execute( event = "Inertia.withSharedClosures", renderResults = true );
-                    var actual = deserializeJSON( event.getValue( "cbox_rendered_content", "" ) );
+                    var event = execute(
+                        event = "Inertia.withSharedClosures",
+                        renderResults = true
+                    );
+                    var actual = deserializeJSON(
+                        event.getValue( "cbox_rendered_content", "" )
+                    );
 
                     expect( actual ).toHaveKey( "component" );
                     expect( actual.component ).toBe( "Home" );
@@ -120,8 +147,13 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
                         .$args( "X-Inertia-Version", "" )
                         .$results( "" );
                     ;
-                    var event = execute( event = "Inertia.withArrayProp", renderResults = true );
-                    var actual = deserializeJSON( event.getValue( "cbox_rendered_content", "" ) );
+                    var event = execute(
+                        event = "Inertia.withArrayProp",
+                        renderResults = true
+                    );
+                    var actual = deserializeJSON(
+                        event.getValue( "cbox_rendered_content", "" )
+                    );
 
                     expect( actual ).toHaveKey( "component" );
                     expect( actual.component ).toBe( "Home" );
@@ -147,8 +179,13 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
                         .$( "getHTTPHeader" )
                         .$args( "X-Inertia-Version", "" )
                         .$results( "" );
-                    var event = execute( event = "Inertia.withShared", renderResults = true );
-                    var actual = deserializeJSON( event.getValue( "cbox_rendered_content", "" ) );
+                    var event = execute(
+                        event = "Inertia.withShared",
+                        renderResults = true
+                    );
+                    var actual = deserializeJSON(
+                        event.getValue( "cbox_rendered_content", "" )
+                    );
 
                     expect( actual ).toHaveKey( "component" );
                     expect( actual.component ).toBe( "Home" );
@@ -174,8 +211,13 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
                         .$( "getHTTPHeader" )
                         .$args( "X-Inertia-Version", "" )
                         .$results( "" );
-                    var event = execute( event = "Inertia.withShared", renderResults = true );
-                    var actual = deserializeJSON( event.getValue( "cbox_rendered_content", "" ) );
+                    var event = execute(
+                        event = "Inertia.withShared",
+                        renderResults = true
+                    );
+                    var actual = deserializeJSON(
+                        event.getValue( "cbox_rendered_content", "" )
+                    );
 
                     expect( actual ).toHaveKey( "component" );
                     expect( actual.component ).toBe( "Home" );
@@ -201,8 +243,13 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
                         .$( "getHTTPHeader" )
                         .$args( "X-Inertia-Version", "" )
                         .$results( "" );
-                    var event = execute( event = "Inertia.withShared", renderResults = true );
-                    var actual = deserializeJSON( event.getValue( "cbox_rendered_content", "" ) );
+                    var event = execute(
+                        event = "Inertia.withShared",
+                        renderResults = true
+                    );
+                    var actual = deserializeJSON(
+                        event.getValue( "cbox_rendered_content", "" )
+                    );
 
                     expect( actual ).toHaveKey( "component" );
                     expect( actual.component ).toBe( "Home" );
@@ -225,8 +272,13 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
                         .$( "getHTTPHeader" )
                         .$args( "X-Inertia-Version", "" )
                         .$results( "" );
-                    var event = execute( event = "Inertia.relocateTest", renderResults = true );
-                    expect( event.getValue( "relocate_STATUSCODE", "" ) ).toBe( 303 );
+                    var event = execute(
+                        event = "Inertia.relocateTest",
+                        renderResults = true
+                    );
+                    expect( event.getValue( "relocate_STATUSCODE", "" ) ).toBe(
+                        303
+                    );
                 } );
             } );
 
@@ -239,11 +291,16 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
                         .$( "getHTTPHeader" )
                         .$args( "X-Inertia-Version", "" )
                         .$results( "not-matching-version" );
-                    var event = execute( event = "Inertia.normal", renderResults = true );
+                    var event = execute(
+                        event = "Inertia.normal",
+                        renderResults = true
+                    );
                     expect( event.getStatusCode() ).toBe( 409 );
                     var headers = event.getValue( "cbox_headers", {} );
                     expect( headers ).toHaveKey( "X-Inertia-Location" );
-                    expect( headers[ "X-Inertia-Location" ] ).toBe( event.getFullUrl() );
+                    expect( headers[ "X-Inertia-Location" ] ).toBe(
+                        event.getFullUrl()
+                    );
                 } );
             } );
         } );

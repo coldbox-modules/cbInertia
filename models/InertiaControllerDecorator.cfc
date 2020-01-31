@@ -22,7 +22,12 @@ component extends="coldbox.system.web.ControllerDecorator" {
     ) {
         var requestContext = getRequestService().getContext();
         if ( requestContext.getHTTPHeader( "X-Inertia", "" ) != "" ) {
-            if ( arrayContainsNoCase( [ "PUT", "PATCH", "DELETE" ], requestContext.getHTTPMethod() ) ) {
+            if (
+                arrayContainsNoCase(
+                    [ "PUT", "PATCH", "DELETE" ],
+                    requestContext.getHTTPMethod()
+                )
+            ) {
                 arguments.statusCode = 303;
             }
         }
