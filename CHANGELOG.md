@@ -1,3 +1,11 @@
+# v1.4.2
+## 13 Feb 2020 — 17:33:35 UTC
+
+### other
+
++ __\*:__ chore: Use forgeboxStorage ([19cec2b](https://github.com/elpete/cbInertia/commit/19cec2bfdd2c940ffd39027cfc4b23d4f100e3fc))
+
+
 # v1.4.1
 ## 31 Jan 2020 — 18:54:01 UTC
 
