@@ -2,7 +2,7 @@
     "name":"cbInertia",
     "version":"1.4.1",
     "author":"Eric Peterson",
-    "location":"elpete/cbInertia#v1.4.1",
+    "location":"forgeboxStorage",
     "homepage":"https://github.com/elpete/cbInertia",
     "documentation":"https://github.com/elpete/cbInertia",
     "repository":{
@@ -27,7 +27,6 @@
         "vue-helpers":"modules/vue-helpers/"
     },
     "scripts":{
-        "postVersion":"package set location='elpete/cbInertia#v`package version`'",
         "format":"cfformat run helpers/**/*.cfc,interceptors/**/*.cfc,models/**/*.cfc,tests/specs/**/*.cfc --overwrite",
         "format:check":"cfformat check helpers/**/*.cfc,interceptors/**/*.cfc,models/**/*.cfc,tests/specs/**/*.cfc"
     },
