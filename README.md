@@ -47,7 +47,7 @@ moduleSettings = {
         "defaultViewArgs": {
             "view": "main/index",
             "module": "cbInertia"
-        }
+        },
         "version": function() {
             return "";
         }
