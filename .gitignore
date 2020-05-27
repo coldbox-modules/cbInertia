@@ -1,6 +1,5 @@
-/testbox
-/integrated
-/tests/results
-/tests/resources/app/coldbox
-/node_modules
-/modules
+/testbox/
+/tests/results/
+/tests/resources/app/coldbox/
+/node_modules/
+/modules/
