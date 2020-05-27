@@ -18,7 +18,7 @@
         "vue-helpers":"^1.0.2"
     },
     "devDependencies":{
-        "coldbox":"^5.5.0+958",
+        "coldbox":"stable",
         "testbox":"^2.4.0+80"
     },
     "installPaths":{
