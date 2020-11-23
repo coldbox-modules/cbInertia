@@ -4,6 +4,10 @@ component {
         inertia( "Home", { "foo": "bar" } );
     }
 
+    function withNull( event, rc, prc ) {
+        inertia( "Home", { "foo": javacast( "null", "" ) } );
+    }
+
     function withShared( event, rc, prc ) {
         inertia().share( "shared", "value" );
         inertia( "Home", { "foo": "bar" } );

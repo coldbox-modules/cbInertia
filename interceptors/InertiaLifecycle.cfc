@@ -69,8 +69,12 @@ component {
         event.setView( argumentCollection = variables.defaultViewArgs );
     }
 
-    private any function resolveClosures( required any prop ) {
-        if ( isClosure( arguments.prop ) || isCustomFunction( arguments.prop ) ) {
+    private any function resolveClosures( any prop ) {
+        if ( isNull( arguments.prop ) ) {
+            return javacast( "null", "" );
+        } else if (
+            isClosure( arguments.prop ) || isCustomFunction( arguments.prop )
+        ) {
             return arguments.prop();
         } else if ( isStruct( arguments.prop ) ) {
             return arguments.prop.map( function( key, value ) {

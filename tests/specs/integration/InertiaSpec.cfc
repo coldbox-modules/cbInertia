@@ -66,6 +66,39 @@ component extends="tests.resources.ModuleIntegrationSpec" appMapping="/app" {
                     expect( actual.url ).toBeTypeOf( "url" );
                 } );
 
+                it( "renders a view with a null prop", function() {
+                    prepareMock( getRequestContext() )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia", "" )
+                        .$results( "true" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia-Partial-Component", "" )
+                        .$results( "Home" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia-Partial-Data", "" )
+                        .$results( "" )
+                        .$( "getHTTPHeader" )
+                        .$args( "X-Inertia-Version", "" )
+                        .$results( "" );
+
+                    var event = execute(
+                        event = "Inertia.normal",
+                        renderResults = true
+                    );
+                    var actual = deserializeJSON(
+                        event.getValue( "cbox_rendered_content", "" )
+                    );
+
+                    expect( actual ).toHaveKey( "component" );
+                    expect( actual.component ).toBe( "Home" );
+
+                    expect( actual ).toHaveKey( "props" );
+                    expect( actual.props ).toBe( { "foo": "bar" } );
+
+                    expect( actual ).toHaveKey( "url" );
+                    expect( actual.url ).toBeTypeOf( "url" );
+                } );
+
                 it( "combines shared props with view props", function() {
                     prepareMock( getRequestContext() )
                         .$( "getHTTPHeader" )
