@@ -12,13 +12,13 @@ component extends="coldbox.system.web.ControllerDecorator" {
         queryString = "",
         boolean addToken = false,
         persist = "",
-        struct persistStruct = structNew()
+        struct persistStruct = structNew(),
         boolean ssl,
         baseURL = "",
         boolean postProcessExempt = false,
         URL,
         URI,
-        numeric statusCode = 0
+        numeric statusCode
     ) {
         var requestContext = getRequestService().getContext();
         if ( requestContext.getHTTPHeader( "X-Inertia", "" ) != "" ) {
