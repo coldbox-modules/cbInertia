@@ -15,16 +15,16 @@
     "description":"The ColdBox adapter for Inertia.js",
     "type":"modules",
     "dependencies":{
-        "vue-helpers":"^1.0.2"
+        "vue-helpers":"^2.0.0"
     },
     "devDependencies":{
-        "coldbox":"stable",
-        "testbox":"^2.4.0+80"
+        "testbox":"^5.0.0",
+        "coldbox":"^7.0.0"
     },
     "installPaths":{
         "testbox":"testbox/",
-        "coldbox":"tests/resources/app/coldbox/",
-        "vue-helpers":"modules/vue-helpers/"
+        "vue-helpers":"modules/vue-helpers/",
+        "coldbox":"tests/resources/app/coldbox/"
     },
     "scripts":{
         "format":"cfformat run helpers/**/*.cfc,interceptors/**/*.cfc,models/**/*.cfc,tests/specs/**/*.cfc --overwrite",

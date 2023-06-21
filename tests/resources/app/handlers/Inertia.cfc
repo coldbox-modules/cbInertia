@@ -25,7 +25,7 @@ component {
     }
 
     function relocateTest( event, rc, prc ) {
-        relocate( "Inertia.normal" );
+        application.cbController.relocate( "Inertia.normal" );
     }
 
 }
